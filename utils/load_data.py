@@ -1,7 +1,13 @@
-from src.sudoku import Sudoku
+# utils/load_data.py
+from sudoku.__init__ import SuDoKu
 
 
-def load_puzzles(file_name):
+def load_sudokus(file_name):
+    """
+    Loads SuDoKu puzzles from file with file name.
+    :param file_name: file name
+    :return: list of SuDoKu puzzles
+    """
     puzzles = []
     with open(file_name) as file:
         lines = file.read().split()
@@ -16,7 +22,7 @@ def load_puzzles(file_name):
                     for k in range(len(block)):
                         cols.append(int(block[k]))
                 rows.append(cols)
-            puzzle = Sudoku(name, rows)
+            puzzle = SuDoKu(name, rows)
             puzzles.append(puzzle)
             ind = ind + 27
     return puzzles
